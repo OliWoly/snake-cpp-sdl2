@@ -1,8 +1,5 @@
-main: main.o
-	clang++ -o main main.o 
-
-main.o: main.cpp
-	clang++ main.cpp -I/Library/Frameworks/SDL2.framework/Headers
+all:
+	clang++ main.cpp -o main -F/Library/Frameworks -framework SDL2 -rpath /Library/Frameworks
 
 clean:
 	rm main
