@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <chrono>
-
+#include "player.h"
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -11,6 +11,15 @@ int main(int argc, char* argv[]) {
     // SETUP
     SDL_Init(SDL_INIT_VIDEO);
     SDL_CreateWindowAndRenderer(640, 480, 0, &window, &renderer);
+
+
+    Player p(10, 10, 10, 10);
+    SDL_Rect pRect;
+    pRect.x = p.getX();
+    pRect.y = p.getY();
+    pRect.h = p.getH();
+    pRect.w = p.getW();
+
     
 
     // Apparently Need this event handler on macos!
@@ -45,10 +54,6 @@ int main(int argc, char* argv[]) {
 
 
 
-                rect1.x += 1;
-
-
-
 
 
 
@@ -60,10 +65,28 @@ int main(int argc, char* argv[]) {
                     {
                         quit = true;
                     }
+
+                    // Check for Key-Downs
+                    else if(e.type == SDL_KEYDOWN){
+                        switch(e.key.keysym.sym){
+                            case SDLK_d:
+                                cout << "Pressed D Key" << endl;
+                                break;
+                            
+                            case SDLK_ESCAPE:
+                                quit = true;
+                                break;
+                        }
+                    }
+
+                    // Check for Key-Ups
+                    else if(e.type == SDL_KEYUP){
+                        switch(e.key.keysym.sym){
+                        }
+                    }
                 }
 
                 gameLoopFrameCounter ++;
-                //printf("%i\n", gameLoopFrameCounter);
             }// gameloop
     return 0;
 }
