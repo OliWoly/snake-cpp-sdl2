@@ -1,4 +1,5 @@
 #include <string>
+#include <SDL2/SDL.h>
 
 class Player {
 private:
@@ -13,6 +14,7 @@ public:
 
     // Function to move the player 10 units to the right
     void moveRight();
+    void reapplyInformationToRenderRectangle(SDL_Rect pRect);
 
     // Getter functions
     int getX() const;
