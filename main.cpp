@@ -5,7 +5,6 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    int gameLoopFrameCounter = 0;
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
     // SETUP
@@ -27,37 +26,20 @@ int main(int argc, char* argv[]) {
     bool quit = false;
             // Event handler
             SDL_Event e;
-            // While application is running
             while( !quit )
             {
-
-
-
                 // CLEAN SCREEN
                 SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
                 SDL_RenderClear(renderer);
 
-                // Need to set up a rectangle object first before I can draw a rectangle
-                // To be able to change the position of the rectangle the variables must be assigned to different variables
-                // i.e, instead of rect1.x = 250;, should be: rect1.x = rect1posx;
-                SDL_Rect rect1;
-                rect1.x = 250;
-                rect1.y = 150;
-                rect1.w = 200;
-                rect1.h = 200;
-
-                // DRAW A RECT
-                SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-                SDL_RenderDrawRect(renderer, &rect1);
-
-                SDL_RenderPresent(renderer);
+                
 
 
 
 
 
 
-                // Handle events on queue
+                // Handle inputs
                 while( SDL_PollEvent( &e ) != 0 ) // poll for event
                 {
                     // User requests quit
@@ -70,7 +52,7 @@ int main(int argc, char* argv[]) {
                     else if(e.type == SDL_KEYDOWN){
                         switch(e.key.keysym.sym){
                             case SDLK_d:
-                                cout << "Pressed D Key" << endl;
+                                p.moveRight();
                                 break;
                             
                             case SDLK_ESCAPE:
@@ -86,7 +68,16 @@ int main(int argc, char* argv[]) {
                     }
                 }
 
-                gameLoopFrameCounter ++;
+                // DRAW A RECT
+                SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+                SDL_RenderDrawRect(renderer, &pRect);
+                SDL_RenderPresent(renderer);
+
+
+
+
+
+
             }// gameloop
     return 0;
 }

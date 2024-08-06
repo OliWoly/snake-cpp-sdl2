@@ -15,18 +15,18 @@ void Player::moveRight() {
 
 // Getters
 
-int getX()const{
+int Player::getX() const {
     return x;
 }
 
-int getY()const{
+int Player::getY() const {
     return y;
 }
 
-int getH()const{
+int Player::getH() const {
     return h;
 }
 
-int getW()const{
+int Player::getW() const {
     return w;
 }
