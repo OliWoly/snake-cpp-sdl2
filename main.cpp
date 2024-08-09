@@ -67,7 +67,6 @@ int main(int argc, char* argv[]) {
                         }
                     }
                 }
-                p.reapplyInformationToRenderRectangle(pRect);
 
                 // DRAW A RECT
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
